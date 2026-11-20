@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:ShellDemo.Views"
+       xmlns:vm="clr-namespace:ShellDemo.ViewModels"
+       x:Class="ShellDemo.AppShell" x:DataType="vm:AppShellViewModel"
+       FlyoutBehavior="Disabled" Shell.BackgroundColor="#102A43" Shell.TitleColor="White"
+       Shell.ForegroundColor="White" Shell.TabBarBackgroundColor="#102A43"
+       Shell.TabBarTitleColor="#60E0C2" Shell.TabBarUnselectedColor="#CCD6E0">
+    <TabBar Route="workshop">
+        <ShellContent Title="Guide" Route="home" Icon="home.png" ContentTemplate="{DataTemplate views:GuidePage}" />
+        <ShellContent Title="Bookings" Route="bookings" Icon="bookings.png" ContentTemplate="{DataTemplate views:BookingsPage}" />
+        <ShellContent Title="Inbox" Route="notifications" Icon="notifications.png"
+                      BadgeText="{Binding NotificationBadge}" BadgeColor="Red" BadgeTextColor="White"
+                      ContentTemplate="{DataTemplate views:NotificationsPage}" />
+        <ShellContent Title="Native lab" Route="lab" Icon="lab.png" ContentTemplate="{DataTemplate views:NativeLabPage}" />
+    </TabBar>
+</Shell>

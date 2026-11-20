@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ShellDemo.ViewModels"
+             x:Class="ShellDemo.Views.NotificationsPage" x:DataType="vm:AppShellViewModel" Title="01–02 · Shared badges">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Notifications" IconImageSource="notifications.png" Order="Primary"
+                     BadgeText="{Binding NotificationBadge}" BadgeColor="Red" BadgeTextColor="White"
+                     Command="{Binding OpenNotificationsCommand}" />
+    </ContentPage.ToolbarItems>
+    <ScrollView><VerticalStackLayout Padding="24" Spacing="14">
+        <Label Text="One state. Two native badges." FontSize="28" FontAttributes="Bold" />
+        <Label Text="Watch the Inbox tab and the notification toolbar icon as you change the shared view model. Empty string means dot; null means hidden." />
+        <Label Text="{Binding UnreadNotificationCount, StringFormat='Unread notifications: {0}'}" FontSize="20" />
+        <Label Text="{Binding Mode, StringFormat='Badge mode: {0}'}" />
+        <Button Text="Add notification" Command="{Binding AddNotificationCommand}" />
+        <Button Text="Mark all read (zero → null)" Command="{Binding MarkAllReadCommand}" />
+        <Button Text="Show dot (empty string)" Command="{Binding ShowDotCommand}" />
+        <Button Text="Hide badge (null)" Command="{Binding HideBadgeCommand}" />
+        <Button Text="Show text: New" Command="{Binding ShowTextCommand}" />
+        <Button Text="Show long count: 1234" Command="{Binding ShowLongCountCommand}" />
+        <Label Text="Windows renders non-numeric text as a dot. Check text, long counts and colours on each target platform. Source: ViewModels/AppShellViewModel.cs, AppShell.xaml, Views/NotificationsPage.xaml." />
+    </VerticalStackLayout></ScrollView>
+</ContentPage>

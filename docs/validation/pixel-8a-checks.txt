@@ -1,0 +1,40 @@
+PASS badge count: tab=5, toolbar=5
+PASS badge increment: tab=6, toolbar=6
+PASS badge zero hides: tab=<null>, toolbar=<null>
+PASS badge empty string dot: tab=, toolbar=
+PASS badge null hidden: tab=<null>, toolbar=<null>
+PASS badge text: tab=New, toolbar=New
+PASS badge long count: tab=1234, toolbar=1234
+PASS Required booking: BookingDetailsPage; bookingId = 12345 (String)
+booking/{bookingId}.bookingId = 12345 (String)
+PASS Escaped space: BookingDetailsPage; bookingId = coastal stay (String)
+booking/{bookingId}.bookingId = coastal stay (String)
+PASS Integer constraint: BookingDetailsPage; bookingId = 12345 (String)
+integer/{bookingId:int}.bookingId = 12345 (String)
+PASS Invalid integer: ArgumentException: unable to figure out route for: //bookings/integer/abc (Parameter 'uri')
+PASS GUID constraint: ParameterPage; customerId = 12345678-1234-1234-1234-123456789abc (String)
+customer/{customerId:guid}.customerId = 12345678-1234-1234-1234-123456789abc (String)
+PASS Long constraint: ParameterPage; value = 9223372036854775807 (String)
+long/{value:long}.value = 9223372036854775807 (String)
+PASS Double constraint: ParameterPage; value = 12.5 (String)
+double/{value:double}.value = 12.5 (String)
+PASS Boolean constraint: ParameterPage; value = true (String)
+bool/{value:bool}.value = true (String)
+PASS Alpha constraint: ParameterPage; value = coastal (String)
+alpha/{value:alpha}.value = coastal (String)
+PASS Optional absent: ParameterPage; No parameters received.
+PASS Optional supplied: ParameterPage; category = coastal (String)
+search/{category?}.category = coastal (String)
+PASS Default page omitted: ParameterPage; page = 1 (String)
+results/{page=1}.page = 1 (String)
+PASS Default page supplied: ParameterPage; page = 2 (String)
+results/{page=1}.page = 2 (String)
+PASS Catch-all path: ParameterPage; path = documents/2026/report.pdf (String)
+files/{*path}.path = documents/2026/report.pdf (String)
+PASS Mixed segment: BookingDetailsPage; bookingId = 12345 (String)
+booking-{bookingId}-summary.bookingId = 12345 (String)
+PASS Literal precedence: LiteralSummaryPage; No parameters received.
+PASS Path wins over query: BookingDetailsPage; bookingId = 12345 (String)
+booking/{bookingId}.bookingId = 12345 (String)
+PASS Relative template unsupported: ArgumentException: unable to figure out route for: booking/12345 (Parameter 'uri')
+PASS Traditional query route: BookingDetailsPage; bookingId = 67890 (String)
